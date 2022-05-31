@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import Header from "./components/Header/Header";
+import './app.css'
+import React, {lazy, Suspense} from 'react';
+import CatsList from "./components/catsList/CatsList";
+import {BrowserRouter, Route, Routes} from "react-router-dom";
+import Preloader from "./components/Preloader/Preloader";
+import Favorites from "./components/Favorites/Favorites";
+import NoMatch from "./components/404/404";
+
+// const Favorites = lazy(() => import("./components/Favorites/Favorites"));
+// const NoMatch = lazy(() => import("./components/404/404"));
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <BrowserRouter>
+            <div className="app">
+                <Header/>
+                <Suspense fallback={<Preloader />}>
+                    <Routes>
+                        <Route path='/' element={<CatsList />} />
+                        <Route path='/favorites' element={<Favorites />} />
+
+                        <Route path='*' element={<NoMatch />} />
+                    </Routes>
+                </Suspense>
+            </div>
+        </BrowserRouter>
+    );
 }
 
 export default App;

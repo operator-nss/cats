@@ -1,0 +1,39 @@
+.header {
+    background: #2196F3;
+    min-height: 64px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.24);
+}
+
+.header__container {
+    width: 1440px;
+    margin: 0 auto;
+    padding: 0 62px;
+}
+
+.header__list {
+    display: flex;
+    align-items: center;
+}
+
+.header__item {
+
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0.25px;
+    transition: all 0.3s;
+}
+
+.header__item:hover {
+    /*background: #308fe7;*/
+}
+
+.header__item:hover a {
+    background: #308fe7;
+}
+
+.header__item a {
+    transition: all 0.3s;
+    padding: 23px 10px;
+    display: inline-block;
+}
