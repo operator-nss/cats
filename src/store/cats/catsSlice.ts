@@ -5,7 +5,7 @@ import {getFavoritesFromLocalStorage} from "../../utils/getFavoritesFromLocalSto
 
 interface catsState {
     items: Cats[],
-    actuallyItems: object[],
+    actuallyItems: Cats[],
     offset: Offset,
     status: string,
     page: number,
@@ -29,7 +29,7 @@ type Offset = {
 const initialState: catsState = {
     items: [],
     actuallyItems: [],
-    favoriteCats: getFavoritesFromLocalStorage() || [],
+    favoriteCats: getFavoritesFromLocalStorage() as unknown as Cats[],
     page: 0,
     offset: {
         start: 0,
@@ -78,10 +78,13 @@ const catsState = createSlice({
                 state.actuallyItems = state.items.slice(state.offset.start, state.offset.end);
             }
         },
-        addFavoriteCate(state, action) {
+        addFavoriteCate(state, action: PayloadAction<any>) {
             if (!state.favoriteCats.find(item => item.id === action.payload)) {
-                const newItem = state.items.find(item => item.id === action.payload);
-                state.favoriteCats = [...state.favoriteCats, newItem];
+                const newItem:Cats | undefined = state.items.find(item => item.id === action.payload);
+                if(newItem) {
+                    state.favoriteCats = [...state.favoriteCats, newItem];
+                }
+
             } else {
                 state.favoriteCats = state.favoriteCats.filter(item => item.id !== action.payload);
             }

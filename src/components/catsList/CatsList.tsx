@@ -5,12 +5,13 @@ import {fetchCats} from "../../store/cats/asyncActions";
 import {addFavoriteCate, resetCats, setActuallyItems, setOffset} from "../../store/cats/catsSlice";
 import Preloader from "../Preloader/Preloader";
 import CatItem from "../CatItem/CatItem";
+import {RootState, useAppDispatch} from "../../store/store";
 
 
-const CatsList = () => {
+const CatsList:React.FC = () => {
 	
-	const dispatch = useDispatch();
-	const {items, offset, status, actuallyItems, page, favoriteCats} = useSelector(state => state.cats)
+	const dispatch = useAppDispatch();
+	const {items, offset, status, actuallyItems, page, favoriteCats} = useSelector((state:RootState) => state.cats)
 	const isMounted = React.useRef(false);
 	
 	let pageCat = `${page}`;
@@ -32,7 +33,7 @@ const CatsList = () => {
 	}
 	
 	
-	const addToFavorite = (id) => {
+	const addToFavorite = (id: string) => {
 		dispatch(addFavoriteCate(id))
 	}
 	

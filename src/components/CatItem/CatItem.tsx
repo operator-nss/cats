@@ -4,7 +4,14 @@ import {useDispatch} from "react-redux";
 import heart from '../../assets/images/heart-d.svg';
 import clsx from "clsx";
 
-const CatItem = ({addToFavorite, id, url, added}) => {
+type CatItemProps = {
+	addToFavorite: (id: string) => void,
+	id: string,
+	url:string,
+	added:boolean
+}
+
+const CatItem:React.FC<CatItemProps> = ({addToFavorite, id, url, added}) => {
 	const dispatch = useDispatch();
 	const [isFavorite, setIsFavorite] = useState(added);
 	

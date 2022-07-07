@@ -15,7 +15,7 @@ export const fetchCats = createAsyncThunk<Cats[], CatsParams>(
     'cats/fetchCatsStatus',
     async (params) => {
         const { pageCat } = params;
-        const { data } = await axios.get<any>
+        const { data } = await axios.get<Cats[]>
         (`https://api.thecatapi.com/v1/images/search?size=thumb&limit=100&page=${pageCat}`);
         return data;
     },

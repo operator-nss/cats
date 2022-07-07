@@ -4,11 +4,9 @@ import React, {lazy, Suspense} from 'react';
 import CatsList from "./components/catsList/CatsList";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import Preloader from "./components/Preloader/Preloader";
-import Favorites from "./components/Favorites/Favorites";
-import NoMatch from "./components/404/404";
 
-// const Favorites = lazy(() => import("./components/Favorites/Favorites"));
-// const NoMatch = lazy(() => import("./components/404/404"));
+const Favorites = lazy(() => import("./components/Favorites/Favorites"));
+const NoMatch = lazy(() => import("./components/404/404"));
 
 function App() {
     return (
