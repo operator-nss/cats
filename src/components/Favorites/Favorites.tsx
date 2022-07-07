@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import './favorites.css'
+import './favorites.scss'
 import {useDispatch, useSelector} from "react-redux";
 import CatItem from "../CatItem/CatItem";
 import {addFavoriteCate} from "../../store/cats/catsSlice";

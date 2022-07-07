@@ -1,5 +1,5 @@
 import React from 'react';
-import './Header.css';
+import './Header.scss';
 import {NavLink, useLocation} from "react-router-dom";
 import {useDispatch} from "react-redux";
 import {resetCats} from "../../store/cats/catsSlice";

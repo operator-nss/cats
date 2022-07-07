@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from "react-router-dom";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
-import './404.css';
+import './404.scss';
 
 const NoMatch = () => {
     return (

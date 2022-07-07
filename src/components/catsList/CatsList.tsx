@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import './CatsList.css';
+import './CatsList.scss';
 import {useDispatch, useSelector} from "react-redux";
 import {fetchCats} from "../../store/cats/asyncActions";
 import {addFavoriteCate, resetCats, setActuallyItems, setOffset} from "../../store/cats/catsSlice";
