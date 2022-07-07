@@ -1,6 +1,7 @@
 import {createSlice} from '@reduxjs/toolkit'
 import type {PayloadAction} from '@reduxjs/toolkit'
 import {fetchCats} from "./asyncActions";
+import {getFavoritesFromLocalStorage} from "../../utils/getFavoritesFromLocalStorage";
 
 interface catsState {
     items: Cats[],
@@ -25,10 +26,10 @@ type Offset = {
     offset: number
 }
 
-const initialState = {
+const initialState: catsState = {
     items: [],
     actuallyItems: [],
-    favoriteCats: [],
+    favoriteCats: getFavoritesFromLocalStorage() || [],
     page: 0,
     offset: {
         start: 0,
@@ -76,18 +77,8 @@ const catsState = createSlice({
             if (state.status !== 'new page') {
                 state.actuallyItems = state.items.slice(state.offset.start, state.offset.end);
             }
-
         },
         addFavoriteCate(state, action) {
-            // if(action.payload) {
-            //     if(!state.favoriteCats.find(item => item.id === action.payload.id)) {
-            //         state.favoriteCats = [...state.favoriteCats, action.payload];
-            //     } else {
-            //         state.favoriteCats = state.favoriteCats.filter(item => item.id !== action.payload.id);
-            //     }
-            // } else {
-            //
-            // }
             if (!state.favoriteCats.find(item => item.id === action.payload)) {
                 const newItem = state.items.find(item => item.id === action.payload);
                 state.favoriteCats = [...state.favoriteCats, newItem];

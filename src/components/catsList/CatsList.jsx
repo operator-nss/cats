@@ -10,13 +10,21 @@ import CatItem from "../CatItem/CatItem";
 const CatsList = () => {
 	
 	const dispatch = useDispatch();
-	const {items, offset, status, actuallyItems, page} = useSelector(state => state.cats)
+	const {items, offset, status, actuallyItems, page, favoriteCats} = useSelector(state => state.cats)
+	const isMounted = React.useRef(false);
 	
 	let pageCat = `${page}`;
 	
 	useEffect(() => {
 		dispatch(fetchCats({pageCat}));
 	}, [pageCat])
+	
+	useEffect(() => {
+		if(isMounted.current) {
+			localStorage.setItem('cats', JSON.stringify(favoriteCats));
+		}
+		isMounted.current = true;
+	}, [favoriteCats])
 	
 	const nextCats = () => {
 		dispatch(setOffset());
@@ -25,7 +33,6 @@ const CatsList = () => {
 	
 	
 	const addToFavorite = (id) => {
-		console.log(id)
 		dispatch(addFavoriteCate(id))
 	}
 	
