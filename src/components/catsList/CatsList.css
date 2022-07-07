@@ -1,11 +1,13 @@
 .cats__grid {
     display: grid;
-    width: 1316px;
+    max-width: 1316px;
     margin: 0 auto;
-    padding-top: 52px;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(auto-fill, minmax(100px ,225px));
+    padding: 52px 15px 0;
     grid-column-gap: 33px;
     grid-row-gap: 33px;
+    text-align: center;
+    justify-content: center;
 }
 
 .cats__item {
@@ -13,14 +15,10 @@
     width: 225px;
     height: 225px;
     transition: all 0.3s;
-    width: 225px;
-    height: 225px;
 }
 
 .cats__item:hover {
     transform: scale(1.14);
-    /*width: 257px;*/
-    /*height: 256px;*/
     box-shadow: 0px 6px 5px rgba(0, 0, 0, 0.24), 0px 9px 18px rgba(0, 0, 0, 0.18);
 }
 
@@ -42,6 +40,8 @@
     cursor: pointer;
 }
 
+
+
 .cats__favorite img {
     opacity: 0;
     visibility: hidden;
@@ -51,6 +51,16 @@
     transition: all 0.3s;
     cursor: pointer;
     z-index: 2;
+}
+
+.favorite img {
+    opacity: 1;
+    visibility: visible;
+}
+
+.favorite {
+    opacity: 1;
+    visibility: visible;
 }
 
 .cats__favorite:hover img {
@@ -64,8 +74,21 @@
     object-fit: cover;
 }
 
-.loadMore {
+.button {
     text-align: center;
     margin: 50px 0;
-    padding-bottom: 50px;
+    padding: 15px 30px;
+    background-color: #2196F3;
+    border-radius: 15px;
+    color: #fff;
+    transition: all 0.5s;
+}
+
+.button:hover {
+    background-color: #155de2;
+}
+
+.cats__loading {
+    margin: 0 auto;
+    text-align: center;
 }
