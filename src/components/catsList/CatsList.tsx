@@ -8,6 +8,7 @@ import CatItem from "../CatItem/CatItem";
 import {RootState, useAppDispatch} from "../../store/store";
 
 
+
 const CatsList:React.FC = () => {
 	
 	const dispatch = useAppDispatch();
@@ -41,6 +42,7 @@ const CatsList:React.FC = () => {
 	return (
 		<>
 			<ul className="cats__grid">
+
 				{
 					actuallyItems.length ? actuallyItems.map((item) => {
 						return <CatItem added={false} key={item.id} addToFavorite={addToFavorite} {...item}/>
