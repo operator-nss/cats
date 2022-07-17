@@ -1,6 +1,5 @@
 # Using The Cat API - Cats as a Service.
 
-Because everyday is a Caturday))
 
 ## 🛠 Технологии:
 
