@@ -25,7 +25,6 @@ const CatItem: React.FC<CatItemProps> = ({addToFavorite, id, url, added}) => {
 
     const handleImageLoaded = () => {
         setImageLoaded(true);
-        console.log('true')
     }
 
     return (

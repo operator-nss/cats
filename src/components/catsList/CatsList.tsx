@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import './CatsList.scss';
 import {useDispatch, useSelector} from "react-redux";
 import {fetchCats} from "../../store/cats/asyncActions";
-import {addFavoriteCate, resetCats, setActuallyItems, setOffset} from "../../store/cats/catsSlice";
+import {addFavoriteCate, resetCats, setActuallyItems, setOffset, setPage} from "../../store/cats/catsSlice";
 import Preloader from "../Preloader/Preloader";
 import CatItem from "../CatItem/CatItem";
 import {RootState, useAppDispatch} from "../../store/store";
@@ -29,8 +29,13 @@ const CatsList:React.FC = () => {
 	}, [favoriteCats])
 	
 	const nextCats = () => {
-		dispatch(setOffset());
-		dispatch(setActuallyItems());
+		if(items.length < 20) {
+			dispatch(setPage())
+		} else {
+			dispatch(setOffset());
+			dispatch(setActuallyItems());
+		}
+
 	}
 	
 	

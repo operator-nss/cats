@@ -73,6 +73,9 @@ const catsState = createSlice({
                 state.status = 'new page';
             }
         },
+        setPage(state) {
+            state.page = state.page + 1
+        },
         setActuallyItems(state) {
             if (state.status !== 'new page') {
                 state.actuallyItems = state.items.slice(state.offset.start, state.offset.end);
@@ -96,5 +99,5 @@ const catsState = createSlice({
     },
 })
 
-export const {setOffset, setActuallyItems, addFavoriteCate, resetCats} = catsState.actions
+export const {setOffset,setPage, setActuallyItems, addFavoriteCate, resetCats} = catsState.actions
 export default catsState.reducer
